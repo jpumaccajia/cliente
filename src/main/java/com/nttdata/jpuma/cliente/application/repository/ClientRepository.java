@@ -1,16 +1,16 @@
 package com.nttdata.jpuma.cliente.application.repository;
 
-import com.nttdata.jpuma.cliente.domain.Cliente;
+import com.nttdata.jpuma.cliente.domain.Client;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-public interface ClienteRepository {
+public interface ClientRepository {
 
-    Flux<Cliente> findAll();
+    Flux<Client> findAll();
 
-    Mono<Cliente> findById(String id);
+    Mono<Client> findById(String id);
 
-    Mono<Cliente> save(Cliente cliente);
+    Mono<Client> save(Client cliente);
 
     Mono<Void> deleteById(String id);
 

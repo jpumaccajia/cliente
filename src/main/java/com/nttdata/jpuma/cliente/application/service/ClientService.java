@@ -1,7 +1,7 @@
 package com.nttdata.jpuma.cliente.application.service;
 
-import com.nttdata.jpuma.cliente.application.repository.ClienteRepository;
-import com.nttdata.jpuma.cliente.domain.Cliente;
+import com.nttdata.jpuma.cliente.application.repository.ClientRepository;
+import com.nttdata.jpuma.cliente.domain.Client;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import reactor.core.publisher.Flux;
@@ -9,17 +9,17 @@ import reactor.core.publisher.Mono;
 
 @RequiredArgsConstructor
 @Slf4j
-public class ClienteService {
-    private final ClienteRepository clienteRepository;
+public class ClientService {
+    private final ClientRepository clienteRepository;
 
-    public Flux<Cliente> getClientes() {
+    public Flux<Client> getClientes() {
         return clienteRepository.findAll();
     }
-    public Mono<Cliente> getCliente(String id) {
+    public Mono<Client> getCliente(String id) {
         return clienteRepository.findById(id);
     }
 
-    public Mono<Cliente> saveCliente(Cliente cliente) {
+    public Mono<Client> saveCliente(Client cliente) {
         return clienteRepository.save(cliente);
     }
 

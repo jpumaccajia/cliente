@@ -1,9 +1,8 @@
 package com.nttdata.jpuma.cliente.infraestructure.db.springdata.repository;
 
-import com.nttdata.jpuma.cliente.application.repository.ClienteRepository;
-import com.nttdata.jpuma.cliente.domain.Cliente;
-import com.nttdata.jpuma.cliente.infraestructure.db.springdata.dbo.ClienteEntity;
-import com.nttdata.jpuma.cliente.infraestructure.db.springdata.mapper.ClienteEntityMapper;
+import com.nttdata.jpuma.cliente.application.repository.ClientRepository;
+import com.nttdata.jpuma.cliente.domain.Client;
+import com.nttdata.jpuma.cliente.infraestructure.db.springdata.mapper.ClientEntityMapper;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -12,28 +11,25 @@ import reactor.core.publisher.Mono;
 
 @Service
 @RequiredArgsConstructor
-public class ClienteDboRepository implements ClienteRepository {
+public class ClientDboRepository implements ClientRepository {
 
-    private final SpringDataClienteRepository clienteRepository;
+    private final SpringDataClientRepository clienteRepository;
 
-    private final ClienteEntityMapper clienteMapper;
+    private final ClientEntityMapper clienteMapper;
 
     @Override
-    public Flux<Cliente> findAll(){
+    public Flux<Client> findAll(){
         return clienteRepository.findAll()
                 .map(clienteMapper::toDomain);
     }
     @Override
-    public Mono<Cliente> findById(String id) {
-//        return clienteMapper.toDomain(clienteRepository.findById(id));
+    public Mono<Client> findById(String id) {
         return clienteRepository.findById(id)
                 .map(clienteMapper::toDomain);
     }
 
     @Override
-    public Mono<Cliente> save(Cliente cliente) {
-        System.out.println("ClienteDboRepository :: save :: clienteMapper.toDbo(cliente) => " + clienteMapper.toDbo(cliente));
-//        return clienteMapper.toDomain(clienteRepository.save(clienteMapper.toDbo(cliente)));
+    public Mono<Client> save(Client cliente) {
         return clienteRepository.save(clienteMapper.toDbo(cliente))
                 .map(clienteMapper::toDomain);
     }

@@ -1,21 +1,20 @@
-package com.nttdata.jpuma.cliente.domain;
+package com.nttdata.jpuma.cliente.infraestructure.rest.spring.dto;
 
 import lombok.*;
-
-import java.time.LocalDateTime;
 
 @Getter
 @Setter
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class Cliente {
+public class ClientDto {
+
     private String id;
+    private String nombreCompleto;
     private String tipoDocumento;
     private String nroDocumento;
     private String direccion;
     private String telefono;
     private String email;
-    private LocalDateTime fechaCreacion;
-    private LocalDateTime fechaModificacion;
+    private String categoria;
 }

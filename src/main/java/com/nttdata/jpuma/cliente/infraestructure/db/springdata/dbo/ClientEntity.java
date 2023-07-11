@@ -10,17 +10,21 @@ import java.time.LocalDateTime;
 
 @Data
 @Document(collection = "cliente")
-public class ClienteEntity {
+public class ClientEntity {
 
     @Id
     private String id;
+    private String nombreCompleto;
     private String tipoDocumento;
     private String nroDocumento;
     private String direccion;
     private String telefono;
     private String email;
+    private String categoria;
+
     @CreatedDate
     private LocalDateTime fechaCreacion;
+
     @LastModifiedDate
     private LocalDateTime fechaModificacion;
 }
